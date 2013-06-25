@@ -11,3 +11,5 @@ Construct the class as normal.
     var super_event = new SuperEvents();
 ```
 
+"APP": [ function(){} ],
+
