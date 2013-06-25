@@ -25,24 +25,30 @@
 		// Create multiple events from an object
 		public function create_events(obj:Object):void
 		{
+			var bound = this._stage
 			for (var i:* in obj)
 			{
-				this._stage.addEventListener(i, function {i}() {, false, 0, false);
+				if(obj[i].bind) bound = obj[i].bind;
+
+				bound.addEventListener(i, function obj[i].func, false, 0, false);
 				this._events[i] = obj[i];
 			}
 		}
 		
 		// Fire a single event / multiple events
-		public function fire_events(str:String):void
+		public function fire_events(arr:Array):void
 		{
-			this._stage.dispatchEvent(new Event(str));
+			dispatchEvent(new Event(str));
 		}
 		
 		// clear a single event / multiple events
 		public function clear_events(str:String):void
 		{
+			var bound = this._stage
 			for (var i:* in obj)
 			{
+				if(obj[i].bind) bound = obj[i].bind;
+
 				this._stage.removeEventListener(i, {obj[i]});
 			}
 		}
